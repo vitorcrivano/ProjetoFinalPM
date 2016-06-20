@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Crivano/Documents/NetBeansProjects/ProjetoPM/src/Objects/Teacher.java</file>
             <file>file:/C:/Users/Crivano/Documents/NetBeansProjects/ProjetoPM/src/Objects/SearchLine.java</file>
             <file>file:/C:/Users/Crivano/Documents/NetBeansProjects/ProjetoPM/src/Objects/Program.java</file>
@@ -10,6 +11,19 @@
             <file>file:/C:/Users/Crivano/Documents/NetBeansProjects/ProjetoPM/src/FilesTreatment/XmlTreatment.java</file>
             <file>file:/C:/Users/Crivano/Documents/NetBeansProjects/ProjetoPM/src/MainClass/Main.java</file>
             <file>file:/C:/Users/Crivano/Documents/NetBeansProjects/ProjetoPM/src/FilesTreatment/ZipTreatment.java</file>
+=======
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/MainClass/Main.java</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/Objects/Program.java</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/FilesTreatment/teste.xml</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/DataTreatment/ArticlesTreatment.java</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/FilesTreatment/ZipTreatment.java</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/Objects/Resume.java</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/Objects/Teacher.java</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/DataTreatment/OrientationTreatment.java</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/FilesTreatment/XmlTreatment.java</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/Objects/SearchLine.java</file>
+            <file>file:/C:/Users/916008/Desktop/ProjetoFinalPM-master/src/DataTreatment/ParticipationsTreatment.java</file>
+>>>>>>> 20287ffded88ddb8bc45efa289140429497eeb62
         </group>
     </open-files>
 </project-private>
