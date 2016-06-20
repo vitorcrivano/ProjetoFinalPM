@@ -24,15 +24,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.jdom2.Document;
 import org.jdom2.Element;
-import org.jdom2.input.DOMBuilder;
 import org.xml.sax.SAXException;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.Attribute;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
 
 /**
  *
@@ -40,11 +32,10 @@ import org.jdom2.input.SAXBuilder;
  */
 public class ZipTreatment {
     
-public void DownloadZipFile(Program program) throws ParserConfigurationException, MalformedURLException, IOException, SAXException{
+public String DownloadZipFile(Program program) throws ParserConfigurationException, MalformedURLException, IOException, SAXException{
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();        
     DocumentBuilder dombuilder = factory.newDocumentBuilder();
-        
-    //Cria link para receber o xml dos curriculos
+    String txtFile="";    
     String firstSplit = "https://s3.amazonaws.com/posgraduacao/";
     XmlTreatment xmlfile = new XmlTreatment();    
     for(SearchLine line : program.getLinhas()){
@@ -66,19 +57,23 @@ public void DownloadZipFile(Program program) throws ParserConfigurationException
             }while(aux !=-1);
                fileOut.close();
                
-            System.out.println("Nome" + "    " + "p.Dout" + "    " + "p.Mestr" + " " + "part.Grad"
-               + "  " + "o.Dout.c" + "    " + "o.Mestr.c" + "   " + "o.Grad.c" + "    " + "o.Dout.and" 
-               + "  " + "o.Mestr.and" + "   " + "o.Grad.and");   
             UnzipFile(file);
             teacher.setResume(xmlfile.BuildResumeByXML());
-            System.out.println(teacher.getName() + "    " + teacher.getResume().getParticipationsAtDoctorship() + " " 
-               + teacher.getResume().getParticipationsAtMasterDegree() + "  " + teacher.getResume().getParticipationsAtFinalGraduationProject()
-               + "  " + teacher.getResume().getOrientationsAtFinishedDoctorship() + "   " + teacher.getResume().getOrientationsAtFinishedMasterDegree()
-               + "  " + teacher.getResume().getOrientationsAtFineshedFinalGraduationProject() + "   " + teacher.getResume().getOrientationsAtDoctorshipInProgress() 
-               + "  " + teacher.getResume().getOrientationsAtMasterDegreeInProgress() + "   " + teacher.getResume().getOrientationsAtInProgressFinalGraduationProject());              
+            /*
+            System.out.println("Nome:"+teacher.getName() + "    " + "Part.Doutorado"+teacher.getResume().getParticipationsAtDoctorship() + " " 
+               + "Part.Mestrado"+teacher.getResume().getParticipationsAtMasterDegree() + "  " + "Part.GraduaçãoConcluida"+teacher.getResume().getParticipationsAtFinalGraduationProject()
+               + "  " + "Orient.DoutoradoConcluido:"+teacher.getResume().getOrientationsAtFinishedDoctorship() + "   " + "Orient.MestradoConcluido"+teacher.getResume().getOrientationsAtFinishedMasterDegree()
+               + "  " + "Orient.GraduaçãoConcluida:"+teacher.getResume().getOrientationsAtFineshedFinalGraduationProject() + "   " + "Orient.DoutoradoEmAndamento"+teacher.getResume().getOrientationsAtDoctorshipInProgress() 
+               + "  " + "Orient.MestradoEmAndamento"+teacher.getResume().getOrientationsAtMasterDegreeInProgress() + "   " + "OrientGraduaçãoEmAndamento"+teacher.getResume().getOrientationsAtInProgressFinalGraduationProject()); 
+            */
+            txtFile = "Nome:"+teacher.getName() + "    " + "Part.Doutorado"+teacher.getResume().getParticipationsAtDoctorship() + " " 
+               + "Part.Mestrado"+teacher.getResume().getParticipationsAtMasterDegree() + "  " + "Part.GraduaçãoConcluida"+teacher.getResume().getParticipationsAtFinalGraduationProject()
+               + "  " + "Orient.DoutoradoConcluido:"+teacher.getResume().getOrientationsAtFinishedDoctorship() + "   " + "Orient.MestradoConcluido"+teacher.getResume().getOrientationsAtFinishedMasterDegree()
+               + "  " + "Orient.GraduaçãoConcluida:"+teacher.getResume().getOrientationsAtFineshedFinalGraduationProject() + "   " + "Orient.DoutoradoEmAndamento"+teacher.getResume().getOrientationsAtDoctorshipInProgress() 
+               + "  " + "Orient.MestradoEmAndamento"+teacher.getResume().getOrientationsAtMasterDegreeInProgress() + "   " + "OrientGraduaçãoEmAndamento"+teacher.getResume().getOrientationsAtInProgressFinalGraduationProject();              
          }
-    System.out.println(line.getName());
     }
+    return txtFile;
 }
 
 public File UnzipFile(File zipFile) throws IOException{

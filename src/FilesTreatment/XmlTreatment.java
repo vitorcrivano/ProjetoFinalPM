@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package FilesTreatment;
-
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 import Objects.Program;
 import Objects.Resume;
 import Objects.SearchLine;
@@ -30,6 +33,17 @@ import org.xml.sax.SAXException;
  * @author Crivano
  */
 public class XmlTreatment {
+    
+public void WriteXML(String txtFile, Program program) throws IOException{
+    FileWriter arq = new FileWriter("C:\\"+ program.getName() + ".txt");
+    PrintWriter gravarArq = new PrintWriter(arq);
+    for(SearchLine line : program.getLinhas()){
+        for(Teacher teacher : line.getTeachers()){
+            gravarArq.printf(txtFile); 
+        }
+    }
+    arq.close();
+}
     
 public SearchLine BuildSearchLinesWithTeachersByXML(Program program)throws ParserConfigurationException, SAXException, IOException {
     
@@ -62,6 +76,7 @@ public SearchLine BuildSearchLinesWithTeachersByXML(Program program)throws Parse
                 searchLine.addTeacher(teacher);
                 //System.out.println("Teachers name:" + teacher.getName() + "\n");
             }
+            program.addLine(searchLine);
         }
         return searchLine; 
 }

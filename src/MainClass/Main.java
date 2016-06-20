@@ -28,8 +28,7 @@ public class Main {
         Program program = new Program("PPGI-UNIRIO");
         xmlfile.BuildSearchLinesWithTeachersByXML(program);
         ZipTreatment zipfile = new ZipTreatment();
-        zipfile.DownloadZipFile(program);
-        ///.BuildResumeByXML();
+        xmlfile.WriteXML(zipfile.DownloadZipFile(program),program);
     }
     
 }
