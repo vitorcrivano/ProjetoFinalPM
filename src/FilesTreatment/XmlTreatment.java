@@ -34,7 +34,6 @@ import org.xml.sax.SAXException;
  */
 public class XmlTreatment {
     
-<<<<<<< HEAD
 public void WriteXML(Program program) throws IOException{
     //gravar arquivo no disco
     FileWriter arq = new FileWriter("C:\\"+ program.getName() + ".txt");
@@ -137,24 +136,6 @@ public void BuildSearchLinesWithTeachersByXML(Program program)throws ParserConfi
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();        
         DocumentBuilder dombuilder = factory.newDocumentBuilder();
         //constroi link pra download  
-=======
-public void WriteXML(String txtFile, Program program) throws IOException{
-    FileWriter arq = new FileWriter("C:\\"+ program.getName() + ".txt");
-    PrintWriter gravarArq = new PrintWriter(arq);
-    for(SearchLine line : program.getLinhas()){
-        for(Teacher teacher : line.getTeachers()){
-            gravarArq.printf(txtFile); 
-        }
-    }
-    arq.close();
-}
-    
-public SearchLine BuildSearchLinesWithTeachersByXML(Program program)throws ParserConfigurationException, SAXException, IOException {
-    
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();        
-        DocumentBuilder dombuilder = factory.newDocumentBuilder();
-        
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         String firstSplit = "https://s3.amazonaws.com/posgraduacao/";
         String finalLink = firstSplit.concat(program.getName()).concat("/contents.xml");
         
@@ -166,26 +147,16 @@ public SearchLine BuildSearchLinesWithTeachersByXML(Program program)throws Parse
         Element rootElement = jdomDocument.getRootElement();
         
         List<Element> searchLineList = rootElement.getChildren();
-<<<<<<< HEAD
         
         //pega todas as linhas de pesquisa e preenche a classe SearchLine
         for(int i=0; i < searchLineList.size(); i++) {
             SearchLine searchLine = new SearchLine();
             //seta nome da linha
             searchLine.setName(searchLineList.get(i).getAttributeValue("nome"));
-=======
-        SearchLine searchLine = new SearchLine();
-        //pega todas as linhas de pesquisa e preenche a classe SearchLine
-        for(int i=0; i < searchLineList.size(); i++) {
-            searchLine.setName(searchLineList.get(i).getAttributeValue("nome"));
-            program.addLine(searchLine);
-            //System.out.println("Program:" + searchLine.getName() + "\n");
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
             List<Element> teacherList = searchLineList.get(i).getChildren();
             //pega todos os professores e preenche a classe Teacher
             for(int j=0; j< teacherList.size(); j++){
                 Teacher teacher = new Teacher();
-<<<<<<< HEAD
                 //seta nome e codigo do professor
                 teacher.setName(teacherList.get(j).getAttributeValue("nome"));
                 teacher.setCode(teacherList.get(j).getAttributeValue("codigo"));
@@ -195,28 +166,15 @@ public SearchLine BuildSearchLinesWithTeachersByXML(Program program)throws Parse
             //adiciona linha no programa
             program.addLine(searchLine);
         }
-=======
-                teacher.setName(teacherList.get(j).getAttributeValue("nome"));
-                teacher.setCode(teacherList.get(j).getAttributeValue("codigo"));
-                searchLine.addTeacher(teacher);
-                //System.out.println("Teachers name:" + teacher.getName() + "\n");
-            }
-            program.addLine(searchLine);
-        }
-        return searchLine; 
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
 }
+
         
 
 public Resume BuildResumeByXML() throws ParserConfigurationException, SAXException, IOException{
     
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();        
         DocumentBuilder dombuilder = factory.newDocumentBuilder();
-<<<<<<< HEAD
         //pega arquivo xml pra leitura do curriculo
-=======
-        
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         org.w3c.dom.Document docProgramas = (org.w3c.dom.Document) dombuilder.parse("curriculo.xml");
         DOMBuilder jdomBuilder = new DOMBuilder();
         
@@ -226,10 +184,7 @@ public Resume BuildResumeByXML() throws ParserConfigurationException, SAXExcepti
         
         List<Element> arrayList = rootElement.getChildren();
         Resume resume = new Resume();
-<<<<<<< HEAD
         //variaveis que serão incrementadas sempre que valor for obtido
-=======
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         int orientationsAtFinishedMasterDegree = 0;
         int orientationsAtFinishedDoctorship = 0;
         int orientationsAtFineshedFinalGraduationProject = 0;
@@ -239,11 +194,8 @@ public Resume BuildResumeByXML() throws ParserConfigurationException, SAXExcepti
         int participationsAtDoctorship = 0;
         int participationsAtMasterDegree = 0;
         int participationsAtFinalGraduationProject = 0;
-        
-<<<<<<< HEAD
+
         //descascar xml pra pegar os dados
-=======
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         for(int i=0; i<arrayList.size(); i++) {
             if(arrayList.get(i).getName().equals("OUTRA-PRODUCAO")) {
                 List<Element> orientationsProdList = arrayList.get(i).getChildren();
@@ -424,10 +376,7 @@ public Resume BuildResumeByXML() throws ParserConfigurationException, SAXExcepti
                     }
                 }    
         }
-<<<<<<< HEAD
         //seta informações pegas no xml pro curriculo do professor
-=======
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         resume.setOrientationsAtFinishedMasterDegree(orientationsAtFinishedMasterDegree);
         resume.setOrientationsAtFinishedDoctorship(orientationsAtFinishedDoctorship);
         resume.setOrientationsAtFineshedFinalGraduationProject(orientationsAtFineshedFinalGraduationProject);

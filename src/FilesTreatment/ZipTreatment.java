@@ -32,7 +32,6 @@ import org.xml.sax.SAXException;
  */
 public class ZipTreatment {
     
-<<<<<<< HEAD
 public void AddResumeToTeacherByDownloadingZipFile(Program program) throws ParserConfigurationException, MalformedURLException, IOException, SAXException{
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();        
     DocumentBuilder dombuilder = factory.newDocumentBuilder();
@@ -47,63 +46,23 @@ public void AddResumeToTeacherByDownloadingZipFile(Program program) throws Parse
             //conexao pra fazer download
             URL url = new URL(finalSplit);
             URLConnection con =  url.openConnection();
-=======
-public String DownloadZipFile(Program program) throws ParserConfigurationException, MalformedURLException, IOException, SAXException{
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();        
-    DocumentBuilder dombuilder = factory.newDocumentBuilder();
-    String txtFile="";    
-    String firstSplit = "https://s3.amazonaws.com/posgraduacao/";
-    XmlTreatment xmlfile = new XmlTreatment();    
-    for(SearchLine line : program.getLinhas()){
-        for(Teacher teacher : line.getTeachers()){
-            String finalSplit = firstSplit.concat(program.getName()).concat("/").concat(teacher.getCode()).concat(".zip");
-            
-            URL url = new URL(finalSplit);
-            URLConnection con =  url.openConnection();
-            
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
             File file = new File(teacher.getCode()+".zip");
             FileOutputStream fileOut = new FileOutputStream(file);
          
             int aux=0;
-<<<<<<< HEAD
             //escrita no disco
-=======
-         
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
             do{
                 aux=con.getInputStream().read();
                 fileOut.write(aux);
 
             }while(aux !=-1);
                fileOut.close();
-<<<<<<< HEAD
             //unzipa arquivo zip    
             UnzipFile(file);
             //seta curriculo dezipado para professor correspondente
             teacher.setResume(xmlfile.BuildResumeByXML());
          }
     }
-=======
-               
-            UnzipFile(file);
-            teacher.setResume(xmlfile.BuildResumeByXML());
-            /*
-            System.out.println("Nome:"+teacher.getName() + "    " + "Part.Doutorado"+teacher.getResume().getParticipationsAtDoctorship() + " " 
-               + "Part.Mestrado"+teacher.getResume().getParticipationsAtMasterDegree() + "  " + "Part.GraduaçãoConcluida"+teacher.getResume().getParticipationsAtFinalGraduationProject()
-               + "  " + "Orient.DoutoradoConcluido:"+teacher.getResume().getOrientationsAtFinishedDoctorship() + "   " + "Orient.MestradoConcluido"+teacher.getResume().getOrientationsAtFinishedMasterDegree()
-               + "  " + "Orient.GraduaçãoConcluida:"+teacher.getResume().getOrientationsAtFineshedFinalGraduationProject() + "   " + "Orient.DoutoradoEmAndamento"+teacher.getResume().getOrientationsAtDoctorshipInProgress() 
-               + "  " + "Orient.MestradoEmAndamento"+teacher.getResume().getOrientationsAtMasterDegreeInProgress() + "   " + "OrientGraduaçãoEmAndamento"+teacher.getResume().getOrientationsAtInProgressFinalGraduationProject()); 
-            */
-            txtFile = "Nome:"+teacher.getName() + "    " + "Part.Doutorado"+teacher.getResume().getParticipationsAtDoctorship() + " " 
-               + "Part.Mestrado"+teacher.getResume().getParticipationsAtMasterDegree() + "  " + "Part.GraduaçãoConcluida"+teacher.getResume().getParticipationsAtFinalGraduationProject()
-               + "  " + "Orient.DoutoradoConcluido:"+teacher.getResume().getOrientationsAtFinishedDoctorship() + "   " + "Orient.MestradoConcluido"+teacher.getResume().getOrientationsAtFinishedMasterDegree()
-               + "  " + "Orient.GraduaçãoConcluida:"+teacher.getResume().getOrientationsAtFineshedFinalGraduationProject() + "   " + "Orient.DoutoradoEmAndamento"+teacher.getResume().getOrientationsAtDoctorshipInProgress() 
-               + "  " + "Orient.MestradoEmAndamento"+teacher.getResume().getOrientationsAtMasterDegreeInProgress() + "   " + "OrientGraduaçãoEmAndamento"+teacher.getResume().getOrientationsAtInProgressFinalGraduationProject();              
-         }
-    }
-    return txtFile;
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
 }
 
 public File UnzipFile(File zipFile) throws IOException{
@@ -115,30 +74,18 @@ public File UnzipFile(File zipFile) throws IOException{
 
     InputStream is = zip.getInputStream(entry);
     OutputStream os = new FileOutputStream(xmlFile);
-        
-<<<<<<< HEAD
+    
     //escreve o xml no disco
-=======
-    //Escreve o xml no disco
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
     int bytesLidos = 0;
     while ((bytesLidos = is.read(buffer)) > 0) {
     os.write(buffer, 0, bytesLidos);
     }
-<<<<<<< HEAD
     //fecha as conexões    
-=======
-        
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
     is.close();
     os.close();
     zip.close();
         
-<<<<<<< HEAD
     //deleta o zip
-=======
-    //Deleta o arquivo zip
->>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
     zipFile.delete();
     return xmlFile;
     }
