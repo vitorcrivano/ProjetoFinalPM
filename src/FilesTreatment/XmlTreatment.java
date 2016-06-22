@@ -34,6 +34,110 @@ import org.xml.sax.SAXException;
  */
 public class XmlTreatment {
     
+<<<<<<< HEAD
+public void WriteXML(Program program) throws IOException{
+    //gravar arquivo no disco
+    FileWriter arq = new FileWriter("C:\\"+ program.getName() + ".txt");
+    PrintWriter gravarArq = new PrintWriter(arq);
+    
+    int orientationsAtFineshedFinalGraduationProject = 0;
+    int orientationsAtFinishedMasterDegree = 0;
+    int orientationsAtFinishedDoctorship = 0;
+    int orientationsAtInProgressFinalGraduationProject = 0;
+    int orientationsAtMasterDegreeInProgress = 0;
+    int orientationsAtDoctorshipInProgress = 0;
+    int participationsAtFinalGraduationProject = 0;
+    int participationsAtMasterDegree = 0;
+    int participationsAtDoctorship = 0;
+    
+    int orientationsAtFineshedFinalGraduationProjectBySearchLine = 0;
+    int orientationsAtFinishedMasterDegreeBySearchLine = 0;
+    int orientationsAtFinishedDoctorshipBySearchLine = 0;
+    int orientationsAtInProgressFinalGraduationProjectBySearchLine = 0;
+    int orientationsAtMasterDegreeInProgressBySearchLine = 0;
+    int orientationsAtDoctorshipInProgressBySearchLine = 0;
+    int participationsAtFinalGraduationProjectBySearchLine = 0;
+    int participationsAtMasterDegreeBySearchLine = 0;
+    int participationsAtDoctorshipBySearchLine = 0;
+    
+    //pega todas as linhas do programa  
+    for(SearchLine line : program.getLinhas()){
+        //pega todos os professores da linha
+        for(Teacher teacher : line.getTeachers()){
+            
+            orientationsAtFineshedFinalGraduationProject = orientationsAtFineshedFinalGraduationProject + teacher.getResume().getOrientationsAtFineshedFinalGraduationProject();
+            orientationsAtFinishedMasterDegree = orientationsAtFinishedMasterDegree + teacher.getResume().getOrientationsAtFinishedMasterDegree();
+            orientationsAtFinishedDoctorship = orientationsAtFinishedDoctorship + teacher.getResume().getOrientationsAtFinishedDoctorship();
+            orientationsAtInProgressFinalGraduationProject = orientationsAtInProgressFinalGraduationProject + teacher.getResume().getOrientationsAtInProgressFinalGraduationProject();
+            orientationsAtMasterDegreeInProgress = orientationsAtMasterDegreeInProgress + teacher.getResume().getOrientationsAtMasterDegreeInProgress();
+            orientationsAtDoctorshipInProgress = orientationsAtDoctorshipInProgress + teacher.getResume().getOrientationsAtDoctorshipInProgress();
+            participationsAtFinalGraduationProject = participationsAtFinalGraduationProject + teacher.getResume().getParticipationsAtFinalGraduationProject();
+            participationsAtMasterDegree = participationsAtMasterDegree + teacher.getResume().getParticipationsAtMasterDegree();
+            participationsAtDoctorship = participationsAtDoctorship + teacher.getResume().getParticipationsAtDoctorship();
+            
+            //imprime professores no txt
+            gravarArq.printf("\r\n"+"Nome: "+teacher.getName()); 
+            gravarArq.printf("\t"+"Orientações em Projetos Finais Concluídos: "+teacher.getResume().getOrientationsAtFineshedFinalGraduationProject()); 
+            gravarArq.printf("\t"+"Orientações em Mestrados Concluídos: "+teacher.getResume().getOrientationsAtFinishedMasterDegree()); 
+            gravarArq.printf("\t"+"Orientações em Doutorados Concluídos: "+teacher.getResume().getOrientationsAtFinishedDoctorship());
+            gravarArq.printf("\t"+"Orientações em Projetos Finais em Andamento: "+teacher.getResume().getOrientationsAtInProgressFinalGraduationProject()); 
+            gravarArq.printf("\t"+"Orientações em Mestrados em Andamento: "+teacher.getResume().getOrientationsAtMasterDegreeInProgress()); 
+            gravarArq.printf("\t"+"Orientações em Doutorados em Andamento: "+teacher.getResume().getOrientationsAtDoctorshipInProgress()); 
+            gravarArq.printf("\t"+"Participações em Projetos Finais: "+teacher.getResume().getParticipationsAtFinalGraduationProject()); 
+            gravarArq.printf("\t"+"Participações em Mestrados: "+teacher.getResume().getParticipationsAtMasterDegree());
+            gravarArq.printf("\t"+"Participações em Doutorados: "+teacher.getResume().getParticipationsAtDoctorship());
+        }
+        orientationsAtFineshedFinalGraduationProjectBySearchLine = orientationsAtFineshedFinalGraduationProjectBySearchLine + orientationsAtFineshedFinalGraduationProject;
+        orientationsAtFinishedMasterDegreeBySearchLine = orientationsAtFinishedMasterDegreeBySearchLine + orientationsAtFinishedMasterDegree;
+        orientationsAtFinishedDoctorshipBySearchLine = orientationsAtFinishedDoctorshipBySearchLine + orientationsAtFinishedDoctorship;
+        orientationsAtInProgressFinalGraduationProjectBySearchLine = orientationsAtInProgressFinalGraduationProjectBySearchLine + orientationsAtInProgressFinalGraduationProject;
+        orientationsAtMasterDegreeInProgressBySearchLine = orientationsAtMasterDegreeInProgressBySearchLine + orientationsAtMasterDegreeInProgress;
+        orientationsAtDoctorshipInProgressBySearchLine = orientationsAtDoctorshipInProgressBySearchLine + orientationsAtDoctorshipInProgress;
+        participationsAtFinalGraduationProjectBySearchLine = participationsAtFinalGraduationProjectBySearchLine + participationsAtFinalGraduationProject;
+        participationsAtMasterDegreeBySearchLine = participationsAtMasterDegreeBySearchLine + participationsAtMasterDegree;
+        participationsAtDoctorshipBySearchLine = participationsAtDoctorshipBySearchLine + participationsAtDoctorship;
+        //imprime linha no txt
+        gravarArq.printf("\r\n"+"Linha de pesquisa: "+line.getName());
+        gravarArq.printf("\t"+"Orientações em Projetos Finais Concluídos: "+orientationsAtFineshedFinalGraduationProject); 
+        gravarArq.printf("\t"+"Orientações em Mestrados Concluídos: "+orientationsAtFinishedMasterDegree); 
+        gravarArq.printf("\t"+"Orientações em Doutorados Concluídos: "+orientationsAtFinishedDoctorship);
+        gravarArq.printf("\t"+"Orientações em Projetos Finais em Andamento: "+orientationsAtInProgressFinalGraduationProject); 
+        gravarArq.printf("\t"+"Orientações em Mestrados em Andamento: "+orientationsAtMasterDegreeInProgress); 
+        gravarArq.printf("\t"+"Orientações em Doutorados em Andamento: "+orientationsAtDoctorshipInProgress); 
+        gravarArq.printf("\t"+"Participações em Projetos Finais: "+participationsAtFinalGraduationProject); 
+        gravarArq.printf("\t"+"Participações em Mestrados: "+participationsAtMasterDegree);
+        gravarArq.printf("\t"+"Participações em Doutorados: "+participationsAtDoctorship);
+        
+        orientationsAtFineshedFinalGraduationProject = 0;
+        orientationsAtFinishedMasterDegree = 0;
+        orientationsAtFinishedDoctorship = 0;
+        orientationsAtInProgressFinalGraduationProject = 0;
+        orientationsAtMasterDegreeInProgress = 0;
+        orientationsAtDoctorshipInProgress = 0;
+        participationsAtFinalGraduationProject = 0;
+        participationsAtMasterDegree = 0;
+        participationsAtDoctorship = 0;
+    }
+    //imprime programa no txt
+    gravarArq.printf("\r\n"+"Programa: "+program.getName());
+    gravarArq.printf("\t"+"Orientações em Projetos Finais Concluídos: "+orientationsAtFineshedFinalGraduationProjectBySearchLine); 
+    gravarArq.printf("\t"+"Orientações em Mestrados Concluídos: "+orientationsAtFinishedMasterDegreeBySearchLine); 
+    gravarArq.printf("\t"+"Orientações em Doutorados Concluídos: "+orientationsAtFinishedDoctorshipBySearchLine);
+    gravarArq.printf("\t"+"Orientações em Projetos Finais em Andamento: "+orientationsAtInProgressFinalGraduationProjectBySearchLine); 
+    gravarArq.printf("\t"+"Orientações em Mestrados em Andamento: "+orientationsAtMasterDegreeInProgressBySearchLine); 
+    gravarArq.printf("\t"+"Orientações em Doutorados em Andamento: "+orientationsAtDoctorshipInProgressBySearchLine); 
+    gravarArq.printf("\t"+"Participações em Projetos Finais: "+participationsAtFinalGraduationProjectBySearchLine); 
+    gravarArq.printf("\t"+"Participações em Mestrados: "+participationsAtMasterDegreeBySearchLine);
+    gravarArq.printf("\t"+"Participações em Doutorados: "+participationsAtDoctorshipBySearchLine);
+    arq.close();
+}
+    
+public void BuildSearchLinesWithTeachersByXML(Program program)throws ParserConfigurationException, SAXException, IOException {
+    
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();        
+        DocumentBuilder dombuilder = factory.newDocumentBuilder();
+        //constroi link pra download  
+=======
 public void WriteXML(String txtFile, Program program) throws IOException{
     FileWriter arq = new FileWriter("C:\\"+ program.getName() + ".txt");
     PrintWriter gravarArq = new PrintWriter(arq);
@@ -50,6 +154,7 @@ public SearchLine BuildSearchLinesWithTeachersByXML(Program program)throws Parse
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();        
         DocumentBuilder dombuilder = factory.newDocumentBuilder();
         
+>>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         String firstSplit = "https://s3.amazonaws.com/posgraduacao/";
         String finalLink = firstSplit.concat(program.getName()).concat("/contents.xml");
         
@@ -61,16 +166,36 @@ public SearchLine BuildSearchLinesWithTeachersByXML(Program program)throws Parse
         Element rootElement = jdomDocument.getRootElement();
         
         List<Element> searchLineList = rootElement.getChildren();
+<<<<<<< HEAD
+        
+        //pega todas as linhas de pesquisa e preenche a classe SearchLine
+        for(int i=0; i < searchLineList.size(); i++) {
+            SearchLine searchLine = new SearchLine();
+            //seta nome da linha
+            searchLine.setName(searchLineList.get(i).getAttributeValue("nome"));
+=======
         SearchLine searchLine = new SearchLine();
         //pega todas as linhas de pesquisa e preenche a classe SearchLine
         for(int i=0; i < searchLineList.size(); i++) {
             searchLine.setName(searchLineList.get(i).getAttributeValue("nome"));
             program.addLine(searchLine);
             //System.out.println("Program:" + searchLine.getName() + "\n");
+>>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
             List<Element> teacherList = searchLineList.get(i).getChildren();
             //pega todos os professores e preenche a classe Teacher
             for(int j=0; j< teacherList.size(); j++){
                 Teacher teacher = new Teacher();
+<<<<<<< HEAD
+                //seta nome e codigo do professor
+                teacher.setName(teacherList.get(j).getAttributeValue("nome"));
+                teacher.setCode(teacherList.get(j).getAttributeValue("codigo"));
+                //adicionar professor na linha
+                searchLine.addTeacher(teacher);
+            }
+            //adiciona linha no programa
+            program.addLine(searchLine);
+        }
+=======
                 teacher.setName(teacherList.get(j).getAttributeValue("nome"));
                 teacher.setCode(teacherList.get(j).getAttributeValue("codigo"));
                 searchLine.addTeacher(teacher);
@@ -79,6 +204,7 @@ public SearchLine BuildSearchLinesWithTeachersByXML(Program program)throws Parse
             program.addLine(searchLine);
         }
         return searchLine; 
+>>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
 }
         
 
@@ -86,7 +212,11 @@ public Resume BuildResumeByXML() throws ParserConfigurationException, SAXExcepti
     
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();        
         DocumentBuilder dombuilder = factory.newDocumentBuilder();
+<<<<<<< HEAD
+        //pega arquivo xml pra leitura do curriculo
+=======
         
+>>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         org.w3c.dom.Document docProgramas = (org.w3c.dom.Document) dombuilder.parse("curriculo.xml");
         DOMBuilder jdomBuilder = new DOMBuilder();
         
@@ -96,6 +226,10 @@ public Resume BuildResumeByXML() throws ParserConfigurationException, SAXExcepti
         
         List<Element> arrayList = rootElement.getChildren();
         Resume resume = new Resume();
+<<<<<<< HEAD
+        //variaveis que serão incrementadas sempre que valor for obtido
+=======
+>>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         int orientationsAtFinishedMasterDegree = 0;
         int orientationsAtFinishedDoctorship = 0;
         int orientationsAtFineshedFinalGraduationProject = 0;
@@ -106,6 +240,10 @@ public Resume BuildResumeByXML() throws ParserConfigurationException, SAXExcepti
         int participationsAtMasterDegree = 0;
         int participationsAtFinalGraduationProject = 0;
         
+<<<<<<< HEAD
+        //descascar xml pra pegar os dados
+=======
+>>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         for(int i=0; i<arrayList.size(); i++) {
             if(arrayList.get(i).getName().equals("OUTRA-PRODUCAO")) {
                 List<Element> orientationsProdList = arrayList.get(i).getChildren();
@@ -286,6 +424,10 @@ public Resume BuildResumeByXML() throws ParserConfigurationException, SAXExcepti
                     }
                 }    
         }
+<<<<<<< HEAD
+        //seta informações pegas no xml pro curriculo do professor
+=======
+>>>>>>> bfdda087d3402a15ee9569f6744bbb8f7af22b2a
         resume.setOrientationsAtFinishedMasterDegree(orientationsAtFinishedMasterDegree);
         resume.setOrientationsAtFinishedDoctorship(orientationsAtFinishedDoctorship);
         resume.setOrientationsAtFineshedFinalGraduationProject(orientationsAtFineshedFinalGraduationProject);
